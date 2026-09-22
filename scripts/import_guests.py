@@ -15,10 +15,10 @@ import sys
 import time
 from neo4j import GraphDatabase
 
-NEO4J_URI      = "neo4j+s://c6db593c.databases.neo4j.io"
-NEO4J_USER     = "c6db593c"
-NEO4J_PASSWORD = "VynT7VQHzGDIrq4rToYsndHyu22qXkpfAsXQ81tPw8c"
-NEO4J_DATABASE = "c6db593c"
+NEO4J_URI      = "neo4j+s://398ffc2d.databases.neo4j.io"
+NEO4J_USER     = "398ffc2d"
+NEO4J_PASSWORD = "pxYFawIJyzFYV_kd6IkXOc-qjNT5heD-WCGS-EgY6Jg"
+NEO4J_DATABASE = "398ffc2d"
 
 
 def first(row, *keys):

@@ -1,6 +1,6 @@
 /**
- * Single source for Neo4j Aura settings. Keep in sync with Cred/Neo4j-c6db593c-DemoNet.txt
- * (instance: DemoNet, ID: c6db593c)
+ * Single source for Neo4j Aura settings. Keep in sync with Cred/Neo4j-398ffc2d-ResearchNet.txt
+ * (instance: ResearchNet, ID: 398ffc2d)
  *
  * If you see "authentication failure": open https://console.neo4j.io → your instance →
  * reset the password, paste it here (and in Cred), rebuild/redeploy.
@@ -9,10 +9,10 @@
  */
 
 const DEFAULTS = {
-  uri: 'neo4j+s://c6db593c.databases.neo4j.io',
-  user: 'c6db593c',
-  password: 'VynT7VQHzGDIrq4rToYsndHyu22qXkpfAsXQ81tPw8c',
-  database: 'c6db593c',
+  uri: 'neo4j+s://398ffc2d.databases.neo4j.io',
+  user: '398ffc2d',
+  password: 'pxYFawIJyzFYV_kd6IkXOc-qjNT5heD-WCGS-EgY6Jg',
+  database: '398ffc2d',
 };
 
 function pickEnv(...candidates) {
