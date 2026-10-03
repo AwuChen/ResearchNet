@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/ResearchNet/static/css/main.ead59979.chunk.css",
-    "main.js": "/ResearchNet/static/js/main.cc4168f4.chunk.js",
-    "main.js.map": "/ResearchNet/static/js/main.cc4168f4.chunk.js.map",
+    "main.js": "/ResearchNet/static/js/main.8d96e8cf.chunk.js",
+    "main.js.map": "/ResearchNet/static/js/main.8d96e8cf.chunk.js.map",
     "runtime-main.js": "/ResearchNet/static/js/runtime-main.d0c56513.js",
     "runtime-main.js.map": "/ResearchNet/static/js/runtime-main.d0c56513.js.map",
-    "static/js/2.a8caf348.chunk.js": "/ResearchNet/static/js/2.a8caf348.chunk.js",
-    "static/js/2.a8caf348.chunk.js.map": "/ResearchNet/static/js/2.a8caf348.chunk.js.map",
+    "static/js/2.f4948218.chunk.js": "/ResearchNet/static/js/2.f4948218.chunk.js",
+    "static/js/2.f4948218.chunk.js.map": "/ResearchNet/static/js/2.f4948218.chunk.js.map",
     "index.html": "/ResearchNet/index.html",
-    "precache-manifest.470b8d6e9334f0c293192481750c70cf.js": "/ResearchNet/precache-manifest.470b8d6e9334f0c293192481750c70cf.js",
+    "precache-manifest.410642700dd66331adc2d7345708f016.js": "/ResearchNet/precache-manifest.410642700dd66331adc2d7345708f016.js",
     "service-worker.js": "/ResearchNet/service-worker.js",
     "static/css/main.ead59979.chunk.css.map": "/ResearchNet/static/css/main.ead59979.chunk.css.map",
-    "static/js/2.a8caf348.chunk.js.LICENSE.txt": "/ResearchNet/static/js/2.a8caf348.chunk.js.LICENSE.txt"
+    "static/js/2.f4948218.chunk.js.LICENSE.txt": "/ResearchNet/static/js/2.f4948218.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d0c56513.js",
-    "static/js/2.a8caf348.chunk.js",
+    "static/js/2.f4948218.chunk.js",
     "static/css/main.ead59979.chunk.css",
-    "static/js/main.cc4168f4.chunk.js"
+    "static/js/main.8d96e8cf.chunk.js"
   ]
 }

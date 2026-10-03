@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2ba0a0dd5e873d143128735a7d3f47fe",
+    "revision": "fc1241793af3d07b2e8c5f378106b6d8",
     "url": "/ResearchNet/index.html"
   },
   {
-    "revision": "92fb6eebe3f548bbea31",
+    "revision": "857012699b578987983a",
     "url": "/ResearchNet/static/css/main.ead59979.chunk.css"
   },
   {
-    "revision": "b8f4625fd87188a92e57",
-    "url": "/ResearchNet/static/js/2.a8caf348.chunk.js"
+    "revision": "7c77d8ef71dd606d4d67",
+    "url": "/ResearchNet/static/js/2.f4948218.chunk.js"
   },
   {
     "revision": "7b36c4a4b00d4c1eb1f21a15ccb34795",
-    "url": "/ResearchNet/static/js/2.a8caf348.chunk.js.LICENSE.txt"
+    "url": "/ResearchNet/static/js/2.f4948218.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "92fb6eebe3f548bbea31",
-    "url": "/ResearchNet/static/js/main.cc4168f4.chunk.js"
+    "revision": "857012699b578987983a",
+    "url": "/ResearchNet/static/js/main.8d96e8cf.chunk.js"
   },
   {
     "revision": "b7f1a66234c5a765179e",
