@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ResearchNet/static/css/main.ead59979.chunk.css",
-    "main.js": "/ResearchNet/static/js/main.b4151753.chunk.js",
-    "main.js.map": "/ResearchNet/static/js/main.b4151753.chunk.js.map",
+    "main.js": "/ResearchNet/static/js/main.cc4168f4.chunk.js",
+    "main.js.map": "/ResearchNet/static/js/main.cc4168f4.chunk.js.map",
     "runtime-main.js": "/ResearchNet/static/js/runtime-main.d0c56513.js",
     "runtime-main.js.map": "/ResearchNet/static/js/runtime-main.d0c56513.js.map",
     "static/js/2.a8caf348.chunk.js": "/ResearchNet/static/js/2.a8caf348.chunk.js",
     "static/js/2.a8caf348.chunk.js.map": "/ResearchNet/static/js/2.a8caf348.chunk.js.map",
     "index.html": "/ResearchNet/index.html",
-    "precache-manifest.1ead93b4044ffc3ce675bf5d5e7a4c12.js": "/ResearchNet/precache-manifest.1ead93b4044ffc3ce675bf5d5e7a4c12.js",
+    "precache-manifest.470b8d6e9334f0c293192481750c70cf.js": "/ResearchNet/precache-manifest.470b8d6e9334f0c293192481750c70cf.js",
     "service-worker.js": "/ResearchNet/service-worker.js",
     "static/css/main.ead59979.chunk.css.map": "/ResearchNet/static/css/main.ead59979.chunk.css.map",
     "static/js/2.a8caf348.chunk.js.LICENSE.txt": "/ResearchNet/static/js/2.a8caf348.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d0c56513.js",
     "static/js/2.a8caf348.chunk.js",
     "static/css/main.ead59979.chunk.css",
-    "static/js/main.b4151753.chunk.js"
+    "static/js/main.cc4168f4.chunk.js"
   ]
 }
