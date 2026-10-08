@@ -2,16 +2,20 @@
 
 Live networking graph for in-person events: React + Neo4j Aura + [react-force-graph](https://github.com/vasturiano/react-force-graph).
 
-Created from the DemoNet template, with its own Aura instance and GitHub Pages site.
+Created from the [DemoNet](https://github.com/AwuChen/DemoNet) template, with its own Aura instance and GitHub Pages site.
 
 Live site: [https://awuchen.github.io/ResearchNet](https://awuchen.github.io/ResearchNet)
 
 ## What is included
 
-- NFC / URL card tap: first tap of your own card registers the phone (`Yes, this is me`)
-- Later taps of someone else's card create a `CONNECTED_TO` relationship
-- Force-directed graph, node profiles (name, role/company, LinkedIn, email)
-- Timeline view and natural-language search
+- NFC / URL card tap with onboarding: claim your card or register as someone else, then connect
+- `CONNECTED_TO` relationships with `createdAt` for timeline playback
+- Force-directed graph; profiles use **school**, **role**, **email**, **LinkedIn**, and extra **links**
+- **Connections** view (default when a phone owner is set): people you met plus follow-up suggestions
+- **Timeline** mode: client-side playback with pinned layout (no force-layout springing or playback flicker)
+- Natural-language search and research export CSV (`scripts/export_participant_connections.py`)
+
+See `react-graph-viz/TIMELINE_README.md` for timeline behavior notes.
 
 ## Neo4j
 

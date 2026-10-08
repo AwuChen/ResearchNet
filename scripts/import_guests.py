@@ -20,7 +20,11 @@ import time
 from neo4j import GraphDatabase
 
 LINKEDIN_RE = re.compile(
-    r"(https?://(?:www\.)?linkedin\.com/[^\s\"']+|(?:www\.)?linkedin\.com/in/[^\s\"']+)",
+    r"(https?://(?:www\.)?linkedin\.com/[^\s\"'\]|]+|(?:www\.)?linkedin\.com/in/[^\s\"'\]|]+)",
+    re.IGNORECASE,
+)
+URL_RE = re.compile(
+    r"(https?://[^\s\"'\]|]+|(?:www\.)?[a-z0-9][-a-z0-9.]+\.[a-z]{2,}(?:/[^\s\"'\]|]*)?)",
     re.IGNORECASE,
 )
 
@@ -43,16 +47,41 @@ def first(row, *keys):
     return ""
 
 
-def extract_linkedin(text):
-    if not text:
+def normalize_url(raw):
+    if not raw:
         return ""
-    match = LINKEDIN_RE.search(text.replace("\n", " "))
-    if not match:
-        return ""
-    url = match.group(1).strip().rstrip(".,)")
-    if not url.startswith("http"):
+    url = raw.strip().rstrip(".,)")
+    if not url.lower().startswith("http"):
         url = "https://" + url.lstrip("/")
     return url
+
+
+def extract_urls_from_text(text):
+    if not text:
+        return []
+    flat = text.replace("\n", " ")
+    found = []
+    seen = set()
+    for match in URL_RE.finditer(flat):
+        url = normalize_url(match.group(1))
+        if not url:
+            continue
+        key = url.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        found.append(url)
+    return found
+
+
+def pick_linkedin(urls):
+    for url in urls:
+        if "linkedin.com" in url.lower():
+            return url
+    for url in urls:
+        if "linkedin.com" in url.lower().replace("http://", "").replace("https://", ""):
+            return url
+    return ""
 
 
 def build_name(row):
@@ -68,14 +97,9 @@ def build_name(row):
 
 def build_role(row):
     company = first(row, "What company do you work for?", "company")
-    student_role = first(row, "role")
-    school = first(row, "school")
-    parts = [p for p in (company, school, student_role) if p]
     if company:
         return company
-    if school and student_role:
-        return f"{school} — {student_role}"
-    return student_role or school
+    return first(row, "role")
 
 
 def load_guests(path):
@@ -88,12 +112,19 @@ def load_guests(path):
             if not name:
                 continue
             extra = first(row, "addition info")
+            urls = extract_urls_from_text(extra)
+            linkedin = pick_linkedin(urls) or normalize_url(
+                first(row, "What is your LinkedIn profile?", "linkedin", "website")
+            )
+            if linkedin and linkedin not in urls:
+                urls.insert(0, linkedin)
+            extra_links = [u for u in urls if u.lower() != (linkedin or "").lower()]
             guests.append({
                 "name":      name,
+                "school":    first(row, "school"),
                 "role":      build_role(row),
-                "location":  first(row, "location", "school"),
-                "website":   extract_linkedin(extra)
-                    or first(row, "What is your LinkedIn profile?", "linkedin", "website"),
+                "website":   linkedin,
+                "links":     "|".join(extra_links),
                 "email":     first(row, "email"),
                 "phone":     first(row, "phone_number", "phone"),
                 "guestId":   first(row, "guest_id"),
@@ -105,20 +136,22 @@ MERGE_QUERY = """
 UNWIND $guests AS g
 MERGE (u:User {name: g.name})
 ON CREATE SET
+    u.school    = g.school,
     u.role      = g.role,
-    u.location  = g.location,
     u.website   = g.website,
+    u.links     = g.links,
     u.email     = g.email,
     u.phone     = g.phone,
     u.guestId   = g.guestId,
     u.createdAt = g.createdAt
 ON MATCH SET
-    u.role      = CASE WHEN u.role IS NULL OR u.role = '' THEN g.role ELSE u.role END,
-    u.location  = CASE WHEN u.location IS NULL OR u.location = '' THEN g.location ELSE u.location END,
-    u.website   = CASE WHEN u.website IS NULL OR u.website = '' THEN g.website ELSE u.website END,
-    u.email     = CASE WHEN u.email IS NULL OR u.email = '' THEN g.email ELSE u.email END,
-    u.phone     = CASE WHEN u.phone IS NULL OR u.phone = '' THEN g.phone ELSE u.phone END,
-    u.guestId   = CASE WHEN u.guestId IS NULL OR u.guestId = '' THEN g.guestId ELSE u.guestId END
+    u.school    = CASE WHEN g.school <> '' THEN g.school ELSE u.school END,
+    u.role      = CASE WHEN g.role <> '' THEN g.role ELSE u.role END,
+    u.website   = CASE WHEN g.website <> '' THEN g.website ELSE u.website END,
+    u.links     = CASE WHEN g.links <> '' THEN g.links ELSE u.links END,
+    u.email     = CASE WHEN g.email <> '' THEN g.email ELSE u.email END,
+    u.phone     = CASE WHEN g.phone <> '' THEN g.phone ELSE u.phone END,
+    u.guestId   = CASE WHEN g.guestId <> '' THEN g.guestId ELSE u.guestId END
 RETURN count(u) AS total
 """
 
